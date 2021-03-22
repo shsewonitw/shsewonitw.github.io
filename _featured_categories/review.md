@@ -1,10 +1,10 @@
 ---
 layout: list
 type: category
-title: Devlog
-slug: devlog
+title: Review
+slug: review
 sidebar: true
-order: 1
+order: 2
 description: >
-  Development log
+  Review
 ---
