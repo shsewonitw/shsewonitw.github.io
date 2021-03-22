@@ -41,8 +41,8 @@ logo:                  /assets/img/logo.png
 # This should be the same author as first entry in `_data/authors.yml`.
 author:
   # Used by `jekyll-feed`:
-  name:                <Shin> <SeokWoo>
-  email:               <shsewonitw@gmail.com>
+  name:                Shin SeokWoo
+  email:               shsewonitw@gmail.com
   # # Used by `jekyll-seo-tag`:
   # twitter:             <username>
 
@@ -116,9 +116,9 @@ defaults:
   - scope:
       path:            hyde/
     values:
-      accent_color:    rgb(38,139,210)
+      accent_color:    rgb(255, 207, 48)
       accent_image:
-        background:    rgb(32,32,32)
+        background:    rgb(255, 207, 48)
         overlay:       false
 
   # Don't include documents in assets in the sitemap
