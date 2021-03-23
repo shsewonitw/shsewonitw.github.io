@@ -19,8 +19,8 @@ author1:
     path:            /assets/img/profile.png
     # srcset is optional, but can be used to provide higher res versions for retina displays
     srcset:
-      1x:            https://placehold.it/128x128
-      2x:            https://placehold.it/256x256
+      1x:            /assets/img/profile.png
+      2x:            /assets/img/profile.png
 
   # Social media icons in sidebar
   # Comment/uncommet to show/hide
