@@ -1,10 +1,10 @@
 ---
 layout: list
 type: category
-title: Non-dev
-slug: non-dev
+title: Tennis
+slug: tennis
 sidebar: true
 order: 2
 description: >
-  Non-dev
+  Tennis
 ---
