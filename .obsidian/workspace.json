@@ -11,12 +11,8 @@
             "id": "1f9fb9b657182b36",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "_posts/tennis/2022-12-09-tennis-court-1.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -85,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/tennis/2022-12-09-tennis-court-1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/tennis/2022-12-09-tennis-court-1.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -124,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "_posts/tennis/2022-12-09-tennis-court-1.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -138,11 +130,11 @@
   },
   "active": "c32589c260eeadfe",
   "lastOpenFiles": [
+    "_posts/tennis/2022-12-09-tennis-court-1.md",
     "assets/img/blog/tennis-court-1-a.jpg",
     "assets/img/blog/tennis-court-1-b.jpg",
     "assets/img/blog/tennis-court-1-c.jpg",
     "assets/img/blog/tennis-court-1-d.jpg",
-    "_posts/tennis/2022-12-09-tennis-court-1.md",
     "_posts/devlog/debug/2019-08-02-RestAPI_Error.md",
     "assets/img/blog/hydejack-8@0,25x.png",
     "assets/img/blog/hydejack-9-dark.jpg",
