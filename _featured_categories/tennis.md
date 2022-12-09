@@ -1,10 +1,10 @@
 ---
 layout: list
 type: category
-title: Review
-slug: review
+title: Tennis
+slug: tennis
 sidebar: true
 order: 2
 description: >
-  Review
+  Tennis
 ---
