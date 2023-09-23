@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: post-backup
 title: "[Debug] HTTPS API Call SSLHandshakeException 발생"
 subtitle: "SSLHandshakeException"
 category: devlog
