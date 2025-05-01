@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[WEB] HTTP Streaming"
+title: "[Web] HTTP Streaming"
 subtitle: "GPT는 어떻게 데이터를 쪼개서 보내는가"
 category: devlog
 tags: web
