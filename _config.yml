@@ -20,7 +20,7 @@
 lang:                  en
 
 # The title of your blog. Used in the sidebar and the browser tab.
-title:                 shsewonitw
+title:                 0x212
 
 # A short description (~150 chars) of the page used for the meta description tag.
 # Can use markdown, but no more than one paragraph (enforced by `>`)
@@ -41,7 +41,7 @@ logo:                  /assets/img/mp.png
 # This should be the same author as first entry in `_data/authors.yml`.
 author:
   # Used by `jekyll-feed`:
-  name:                Shin SeokWoo
+  name:                Shin Seok Woo
   email:               shsewonitw@gmail.com
   # # Used by `jekyll-seo-tag`:
   # twitter:             <username>
