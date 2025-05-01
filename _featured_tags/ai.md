@@ -1,11 +1,11 @@
 ---
 layout: tag-list
 type: tag
-title: Algorithm
-slug: algorithm
+title: AI
+slug: ai
 category: devlog
 sidebar: true
 order: 1
 description: >
-   Algorithm 
+   About AI.. 
 ---

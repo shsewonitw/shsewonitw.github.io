@@ -1,11 +1,11 @@
 ---
 layout: tag-list
 type: tag
-title: Deep Learning
-slug: deeplearning
+title: WEB
+slug: web
 category: devlog
 sidebar: true
-order: 4
+order: 3
 description: >
-   Deep Learning log
+   About WEB.. 
 ---

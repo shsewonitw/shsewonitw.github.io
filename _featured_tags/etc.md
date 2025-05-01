@@ -1,11 +1,11 @@
 ---
 layout: tag-list
 type: tag
-title: Linux
-slug: linux
+title: ETC
+slug: etc
 category: devlog
 sidebar: true
-order: 3
+order: 99
 description: >
-   Linux log
+   Another things about develop..
 ---
