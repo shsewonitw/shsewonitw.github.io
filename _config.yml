@@ -20,7 +20,7 @@
 lang:                  en
 
 # The title of your blog. Used in the sidebar and the browser tab.
-title:                 "0x212🐒"
+title:                 "0x212"
 
 # A short description (~150 chars) of the page used for the meta description tag.
 # Can use markdown, but no more than one paragraph (enforced by `>`)
@@ -28,7 +28,7 @@ description:           >
   Hi, Im jjang
 
 # A shorter description for the sidebar.
-tagline:               🇰🇷
+tagline:               🐒
 
 # A list of keywords for your blog
 keywords:              [devlog]
