@@ -1,7 +1,7 @@
 ---
 layout: list
 type: category
-title: Tennis
+title: 🎾Tennis
 slug: tennis
 sidebar: true
 order: 2

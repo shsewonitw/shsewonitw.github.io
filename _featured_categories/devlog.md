@@ -1,7 +1,7 @@
 ---
 layout: list
 type: category
-title: Devlog
+title: 🧑‍💻Devlog
 slug: devlog
 sidebar: true
 order: 1
