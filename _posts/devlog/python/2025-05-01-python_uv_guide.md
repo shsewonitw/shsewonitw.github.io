@@ -6,6 +6,10 @@ category: devlog
 tags: python
 ---
 
+![Image](https://github.com/user-attachments/assets/7dcb8cef-f0ee-4dad-b425-d2295783f6df)
+
+---
+
 # Python uv — 차세대 Python 패키징 도구
 
 Python 생태계는 pip, poetry, conda 등 다양한 도구로 인해 복잡했습니다.  

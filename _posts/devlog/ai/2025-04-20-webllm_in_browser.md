@@ -6,6 +6,10 @@ category: devlog
 tags: ai
 ---
 
+![Image](https://github.com/user-attachments/assets/cc9860ca-b4e5-4161-a50f-698508eac228)
+
+---
+
 # WebLLM — 브라우저에서 LLM을 실행하는 기술과 활용 방법
 
 대규모 언어 모델(LLM)은 이제 브라우저에서도 실행할 수 있습니다.  

@@ -6,6 +6,10 @@ category: devlog
 tags: etc
 ---
 
+![Image](https://github.com/user-attachments/assets/1432cd54-f8e9-46c4-84fe-bcaebffbab44)
+
+---
+
 # SVN to Git 마이그레이션 — 실전 방법과 명령어 정리
 
 SVN에서 Git으로 이전하는 것은 많은 기업과 개발자에게 중요한 작업입니다.

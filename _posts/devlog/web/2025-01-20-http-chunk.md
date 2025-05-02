@@ -6,6 +6,10 @@ category: devlog
 tags: web
 ---
 
+![Image](https://github.com/user-attachments/assets/cf27833e-0910-4772-a185-d10ff31d2622)
+
+---
+
 # ChatGPT의 실시간 응답 원리 — HTTP Chunked Transfer Encoding
 
 GPT API를 사용하면 응답이 한번에 오지 않고, 마치 "생각하는 것처럼" 조금씩 도착합니다.  
