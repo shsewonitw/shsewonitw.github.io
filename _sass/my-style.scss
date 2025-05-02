@@ -1,0 +1,56 @@
+.dl-table {
+  a {
+    @supports ((text-decoration-thickness: initial) and (text-underline-offset: initial)) {
+      text-underline-offset: .8rem;
+    }
+    @supports not ((text-decoration-thickness: initial) and (text-underline-offset: initial)) {
+      padding-bottom: .45rem;
+    }
+  }
+
+  .btn, .gumroad-button  {
+    margin: 1rem 0;
+  }
+}
+.sidebar-sticky {
+  height: 100%;
+  padding-top: 5%;
+  position: absolute;
+}
+.sidebar-about {
+  padding-bottom:10%;
+}
+.spread-btn{
+  left: 7%;
+  position: absolute;
+  padding: 0;
+  padding-top: 5px;
+  border: none;
+  background: none;
+  color: white;
+  cursor: pointer;
+}
+
+.spread-btn:hover{
+  color: grey;
+}
+
+.menu-wrapper{
+  display: flex;
+  text-align: left;
+  margin-left: 10%;
+  margin-bottom: 0%;
+  
+  input[type=checkbox]{
+    display: none;
+  }
+  
+  input[type=checkbox] ~ ul{
+    display: none;
+    list-style: none;
+  }
+  
+  input[type=checkbox]:checked ~ ul{
+    display: block;
+  }
+}

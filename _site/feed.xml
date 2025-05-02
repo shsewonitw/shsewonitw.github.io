@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-05-02T15:49:13+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">0x212</title><subtitle>Hi, Im jjang
+</subtitle><author><name>Shin Seok Woo</name><email>shsewonitw@gmail.com</email></author><entry><title type="html">uv - 차세대 Python 패키징 도구</title><link href="http://localhost:4000/devlog/python/2025-05-01-python_uv_guide/" rel="alternate" type="text/html" title="uv - 차세대 Python 패키징 도구" /><published>2025-05-01T00:00:00+09:00</published><updated>2025-05-02T15:47:27+09:00</updated><id>http://localhost:4000/devlog/python/python_uv_guide</id><content type="html" xml:base="http://localhost:4000/devlog/python/2025-05-01-python_uv_guide/"><![CDATA[<p><img src="https://github.com/user-attachments/assets/7dcb8cef-f0ee-4dad-b425-d2295783f6df" alt="Image" /></p>
+
+<hr />
+
+<h1 id="python-uv--차세대-python-패키징-도구">Python uv — 차세대 Python 패키징 도구</h1>
+
+<p>Python 생태계는 pip, poetry, conda 등 다양한 도구로 인해 복잡했습니다.<br />
+<strong>uv</strong>는 이 모든 것을 통합하고 더 빠르게 실행되도록 설계된 최신 도구입니다.</p>
+
+<h2 id="uv란">uv란?</h2>
+
+<ul>
+  <li>Rust로 작성된 고속 의존성 해석 엔진</li>
+  <li>패키지 관리, 가상환경 생성, 빌드 등을 통합</li>
+  <li>pip 대비 8배 빠른 설치 속도</li>
+</ul>
+
+<h2 id="uv-사용법">uv 사용법</h2>
+
+<h3 id="설치">설치</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>uv venv
+uv <span class="nb">sync</span>
+</code></pre></div></div>
+
+<h3 id="패키지-설치-및-실행">패키지 설치 및 실행</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>uv add requests
+uv run hello.py
+</code></pre></div></div>
+
+<h3 id="린터-및-포매터-실행">린터 및 포매터 실행</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>uvx ruff check <span class="nb">.</span>
+uvx ruff format <span class="k">*</span>.py
+</code></pre></div></div>
+
+<h2 id="결론">결론</h2>
+
+<p>uv는 Python 개발을 더 쉽고 빠르게 만들어주는 차세대 표준 도구로 급부상하고 있습니다.</p>]]></content><author><name>Shin Seok Woo</name><email>shsewonitw@gmail.com</email></author><category term="[&quot;devlog&quot;, &quot;python&quot;]" /><summary type="html"><![CDATA[A page showing Hydejack-specific markdown content.]]></summary></entry><entry><title type="html">[ETC] SVN to Git 마이그레이션</title><link href="http://localhost:4000/devlog/etc/2025-04-30-svn_git_migration/" rel="alternate" type="text/html" title="[ETC] SVN to Git 마이그레이션" /><published>2025-04-30T00:00:00+09:00</published><updated>2025-05-02T15:47:22+09:00</updated><id>http://localhost:4000/devlog/etc/svn_git_migration</id><content type="html" xml:base="http://localhost:4000/devlog/etc/2025-04-30-svn_git_migration/"><![CDATA[<p><img src="https://github.com/user-attachments/assets/1432cd54-f8e9-46c4-84fe-bcaebffbab44" alt="Image" /></p>
+
+<hr />
+
+<h1 id="svn-to-git-마이그레이션--실전-방법과-명령어-정리">SVN to Git 마이그레이션 — 실전 방법과 명령어 정리</h1>
+
+<p>SVN에서 Git으로 이전하는 것은 많은 기업과 개발자에게 중요한 작업입니다.</p>
+
+<h2 id="svn-사용자-목록-추출">SVN 사용자 목록 추출</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>svn log <span class="nt">--quiet</span> URL | <span class="nb">grep</span> <span class="s1">'^r'</span> | <span class="nb">awk</span> <span class="s1">'{print $3}'</span> | <span class="nb">sort</span> | <span class="nb">uniq</span> <span class="o">&gt;</span> svn_authors.txt
+</code></pre></div></div>
+
+<h2 id="git으로-마이그레이션">Git으로 마이그레이션</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git svn clone http://svn.repo.url <span class="nt">--no-metadata</span> <span class="nt">-A</span> users.txt <span class="nt">-T</span> trunk <span class="nt">-b</span> branches <span class="nt">-t</span> tags ./git-repo
+</code></pre></div></div>
+
+<h2 id="결론">결론</h2>
+
+<p>git svn을 활용하면 이력과 브랜치를 모두 유지한 상태로 쉽게 마이그레이션이 가능합니다.</p>]]></content><author><name>Shin Seok Woo</name><email>shsewonitw@gmail.com</email></author><category term="[&quot;devlog&quot;, &quot;etc&quot;]" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">[AI] 브라우저에서 실행하는 LLM</title><link href="http://localhost:4000/devlog/ai/2025-04-20-webllm_in_browser/" rel="alternate" type="text/html" title="[AI] 브라우저에서 실행하는 LLM" /><published>2025-04-20T00:00:00+09:00</published><updated>2025-05-02T15:46:31+09:00</updated><id>http://localhost:4000/devlog/ai/webllm_in_browser</id><content type="html" xml:base="http://localhost:4000/devlog/ai/2025-04-20-webllm_in_browser/"><![CDATA[<p><img src="https://github.com/user-attachments/assets/cc9860ca-b4e5-4161-a50f-698508eac228" alt="Image" /></p>
+
+<hr />
+
+<h1 id="webllm--브라우저에서-llm을-실행하는-기술과-활용-방법">WebLLM — 브라우저에서 LLM을 실행하는 기술과 활용 방법</h1>
+
+<p>대규모 언어 모델(LLM)은 이제 브라우저에서도 실행할 수 있습니다.<br />
+<strong>WebLLM</strong>은 WebGPU와 WebAssembly를 활용해 서버 없이도 LLM을 실행합니다.</p>
+
+<h2 id="webllm이란">WebLLM이란?</h2>
+
+<ul>
+  <li>브라우저에서 완전 오프라인으로 LLM 실행 가능</li>
+  <li>개인정보 보호 및 빠른 응답 가능</li>
+</ul>
+
+<h2 id="어떻게-동작하는가">어떻게 동작하는가?</h2>
+
+<ul>
+  <li>모델은 처음 로드 후 CacheStorage에 저장</li>
+  <li>WebAssembly + WebGPU로 빠른 실행</li>
+</ul>
+
+<h2 id="장점-비교">장점 비교</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>클라우드 LLM</th>
+      <th>WebLLM</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>오프라인 사용</td>
+      <td>불가능</td>
+      <td>가능</td>
+    </tr>
+    <tr>
+      <td>개인정보 보호</td>
+      <td>서버 전송 필요</td>
+      <td>로컬 실행</td>
+    </tr>
+    <tr>
+      <td>설치</td>
+      <td>서버 필요</td>
+      <td>브라우저만 있으면 가능</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="사용-예">사용 예</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm i @mlc-ai/web-llm
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">engine</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">webllm</span><span class="p">.</span><span class="nc">CreateMLCEngine</span><span class="p">(</span><span class="dl">"</span><span class="s2">모델명</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">reply</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">engine</span><span class="p">.</span><span class="nx">chat</span><span class="p">.</span><span class="nx">completions</span><span class="p">.</span><span class="nf">create</span><span class="p">({</span> <span class="nx">messages</span> <span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="결론">결론</h2>
+
+<p>WebLLM은 가벼운 AI 서비스나 개인화된 애플리케이션 개발에 매우 적합합니다.</p>]]></content><author><name>Shin Seok Woo</name><email>shsewonitw@gmail.com</email></author><category term="[&quot;devlog&quot;, &quot;ai&quot;]" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">[Web] HTTP Streaming</title><link href="http://localhost:4000/devlog/web/2025-01-20-http-chunk/" rel="alternate" type="text/html" title="[Web] HTTP Streaming" /><published>2025-01-20T00:00:00+09:00</published><updated>2025-05-02T15:47:46+09:00</updated><id>http://localhost:4000/devlog/web/http-chunk</id><content type="html" xml:base="http://localhost:4000/devlog/web/2025-01-20-http-chunk/"><![CDATA[<p><img src="https://github.com/user-attachments/assets/cf27833e-0910-4772-a185-d10ff31d2622" alt="Image" /></p>
+
+<hr />
+
+<h1 id="chatgpt의-실시간-응답-원리--http-chunked-transfer-encoding">ChatGPT의 실시간 응답 원리 — HTTP Chunked Transfer Encoding</h1>
+
+<p>GPT API를 사용하면 응답이 한번에 오지 않고, 마치 “생각하는 것처럼” 조금씩 도착합니다.<br />
+이것은 바로 <strong>HTTP Chunked Transfer Encoding</strong> 덕분입니다.</p>
+
+<h2 id="http-chunked-transfer-encoding-이란">HTTP Chunked Transfer Encoding 이란?</h2>
+
+<ul>
+  <li>HTTP 응답을 한 번에 전송하지 않고, <strong>작은 조각(chunk)</strong> 으로 나누어 전송하는 방식</li>
+  <li>GPT API는 이 방식을 사용해 사용자가 더 빠르게 응답을 확인할 수 있도록 합니다.</li>
+</ul>
+
+<h2 id="실제-예시">실제 예시</h2>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Transfer-Encoding</span><span class="p">:</span> <span class="s">chunked</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre></div></div>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"delta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello"</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="websocket과의-차이점">WebSocket과의 차이점</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>HTTP Streaming</th>
+      <th>WebSocket</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>데이터 방향</td>
+      <td>서버 → 클라이언트 (단방향)</td>
+      <td>클라이언트 ↔ 서버 (양방향)</td>
+    </tr>
+    <tr>
+      <td>사용 예</td>
+      <td>GPT 응답, 로그</td>
+      <td>채팅, 협업 툴</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="결론">결론</h2>
+
+<p>GPT는 WebSocket 대신 HTTP Streaming을 통해 효율적이면서도 친숙한 방식으로 실시간 응답을 제공합니다.</p>]]></content><author><name>Shin Seok Woo</name><email>shsewonitw@gmail.com</email></author><category term="[&quot;devlog&quot;, &quot;web&quot;]" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">[Tennis Court] 송도달빛축제공원 실내테니스장 🎾</title><link href="http://localhost:4000/tennis/2022-12-24-tennis-court-3/" rel="alternate" type="text/html" title="[Tennis Court] 송도달빛축제공원 실내테니스장 🎾" /><published>2022-12-24T00:00:00+09:00</published><updated>2025-05-01T20:00:54+09:00</updated><id>http://localhost:4000/tennis/tennis-court-3</id><content type="html" xml:base="http://localhost:4000/tennis/2022-12-24-tennis-court-3/"><![CDATA[<p><img src="/assets/img/blog/tennis-main.jpg" alt="image" /></p>
+
+<hr />
+
+<h1 id="1-위치">1. 위치</h1>
+
+<p><img src="/assets/img/blog/tennis-court-3-a.jpg" alt="image" /></p>
+<blockquote>
+  <ul>
+    <li>인천광역시 연수구 센트럴로 350 달빛축제공원</li>
+  </ul>
+</blockquote>
+
+<h1 id="2-주차">2. 주차</h1>
+
+<p><img src="/assets/img/blog/tennis-court-3-b.png" alt="image" /></p>
+<blockquote>
+  <ul>
+    <li>송도달빛축제공원 주차장과 인천 펜타포트 락 페스티벌 공연장 앞 주차장이 있다</li>
+    <li>둘다 자리는 여유있으나, 행사가 있거나 하면 주차가 불가능하다</li>
+    <li>인천 펜타포트 락 페스티벌 공연장 앞 주차장이 테니스장과 가깝다</li>
+  </ul>
+</blockquote>
+
+<h1 id="3-코트">3. 코트</h1>
+
+<p><img src="/assets/img/blog/tennis-court-3-c.jpg" alt="image" /></p>
+<blockquote>
+  <ul>
+    <li>실내 2코트로 구성 되어있다</li>
+    <li>농구, 배드민턴장과 같이 있지만 파티션으로 분리되어있어 크게 영향은 없다</li>
+    <li>바닥 보수를 했을때, 미끄러워서 게임을 제대로 할 수 없다던가 하는 경우가 있다</li>
+    <li>추운 겨울에는 라디에이터를 틀어줘서 실외보다는 훨씬 더 나은 환경에서 게임을 할 수 있다</li>
+  </ul>
+</blockquote>
+
+<h1 id="4-예약">4. 예약</h1>
+<blockquote>
+  <ul>
+    <li>40,000원 ~ 60,000원 (2시간 단위 예약) (주중, 주말, 시간대 별로 가격 상이)</li>
+    <li><a href="https://reserve.insiseol.or.kr/fmcs/rental/rentalSchedule.do?comcd=I_FMC3&amp;partcd=03&amp;placecd=11&amp;schy=2023&amp;schm=1">인천시설공단 예약 바로가기</a></li>
+  </ul>
+</blockquote>]]></content><author><name>Shin Seok Woo</name><email>shsewonitw@gmail.com</email></author><category term="tennis" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">[Tennis Court] 모나크테니스 클럽 🎾</title><link href="http://localhost:4000/tennis/2022-12-11-tennis-court-2/" rel="alternate" type="text/html" title="[Tennis Court] 모나크테니스 클럽 🎾" /><published>2022-12-11T00:00:00+09:00</published><updated>2025-05-01T20:00:54+09:00</updated><id>http://localhost:4000/tennis/tennis-court-2</id><content type="html" xml:base="http://localhost:4000/tennis/2022-12-11-tennis-court-2/"><![CDATA[<p><img src="/assets/img/blog/tennis-main.jpg" alt="image" /></p>
+
+<hr />
+
+<h1 id="1-위치">1. 위치</h1>
+
+<p><img src="/assets/img/blog/tennis-court-2-a.jpg" alt="image" /></p>
+<blockquote>
+  <ul>
+    <li>인천 연수구 송도문화로 119-6 (인천글로벌캠퍼스 입구 앞 테니스장)</li>
+  </ul>
+</blockquote>
+
+<h1 id="2-주차">2. 주차</h1>
+
+<p><img src="/assets/img/blog/tennis-court-2-c.png" alt="image" /></p>
+<blockquote>
+  <ul>
+    <li>공터에 주차를 하도록 되어있으며, 공간은 상당히 넓어서 여유가 있다</li>
+  </ul>
+</blockquote>
+
+<h1 id="3-코트">3. 코트</h1>
+
+<p><img src="/assets/img/blog/tennis-court-2-b.png" alt="image" />
+<img src="/assets/img/blog/tennis-court-2-d.png" alt="image" /></p>
+<blockquote>
+  <ul>
+    <li>총 4면의 코트가 있고, 휴게실과 자판기도 구비되어있다</li>
+    <li>코트가 깔끔하고 코트색깔도 이쁘고 주변 배경도 이뻐서 사진 찍기에도 좋은 테니스장</li>
+  </ul>
+</blockquote>
+
+<h1 id="4-예약">4. 예약</h1>
+<blockquote>
+  <ul>
+    <li>20,000원 ~ 30,000원 (주중, 주말, 시간대 별로 가격 상이)</li>
+    <li><a href="https://map.naver.com/v5/entry/place/1201752435?c=14100395.0438348,4491367.6068496,13,0,0,0,dh&amp;placePath=%2Fbooking%3FbookingRedirectUrl=https:%2F%2Fm.booking.naver.com%2Fbooking%2F6%2Fbizes%2F718262%26entry=plt">네이버 예약 바로가기</a></li>
+  </ul>
+</blockquote>]]></content><author><name>Shin Seok Woo</name><email>shsewonitw@gmail.com</email></author><category term="tennis" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">[Tennis Court] 홍테니스아카데미 🎾</title><link href="http://localhost:4000/tennis/2022-12-09-tennis-court-1/" rel="alternate" type="text/html" title="[Tennis Court] 홍테니스아카데미 🎾" /><published>2022-12-09T00:00:00+09:00</published><updated>2025-05-01T20:00:54+09:00</updated><id>http://localhost:4000/tennis/tennis-court-1</id><content type="html" xml:base="http://localhost:4000/tennis/2022-12-09-tennis-court-1/"><![CDATA[<p><img src="/assets/img/blog/tennis-main.jpg" alt="image" /></p>
+
+<hr />
+
+<h1 id="1-위치">1. 위치</h1>
+
+<p><img src="/assets/img/blog/tennis-court-1-a.jpg" alt="image" /></p>
+<blockquote>
+  <ul>
+    <li>인천광역시 남동구 운연천로 134 홍테니스아카데미</li>
+  </ul>
+</blockquote>
+
+<h1 id="2-주차">2. 주차</h1>
+
+<p><img src="/assets/img/blog/tennis-court-1-c.jpg" alt="image" /></p>
+<blockquote>
+  <ul>
+    <li>주차장이 넓지는 않지만, 코트가 3면인걸 생각하면 주차공간이 부족할 일은 
+거의 없어 보임</li>
+  </ul>
+</blockquote>
+
+<h1 id="3-코트">3. 코트</h1>
+
+<p><img src="/assets/img/blog/tennis-court-1-d.jpg" alt="image" />
+<img src="/assets/img/blog/tennis-court-1-b.jpg" alt="image" /></p>
+<blockquote>
+  <ul>
+    <li>총 3면의 코트가 있으며, 단독공간에 1면이 있고 나머지 2개의 면은 붙어있음</li>
+    <li>단독 1면은 좁기때문에 경기를 하기에는 무리가 있어보이고, 레슨 시 사용하는 코트로 보임</li>
+    <li>경기를 하는 2면의 코트는 상당히 가까이 붙어있는 편</li>
+    <li>테니스장 전체적으로 굉장히 깔끔하고 정돈이 잘 되어있음</li>
+  </ul>
+</blockquote>
+
+<h1 id="4-예약">4. 예약</h1>
+<blockquote>
+  <ul>
+    <li>20,000원 ~ 35,000원 (주중, 주말, 시간대 별로 가격 상이)</li>
+    <li><a href="https://m.booking.naver.com/booking/10/bizes/749246?theme=place&amp;entry=ple&amp;area=ple">네이버 예약 바로가기</a></li>
+  </ul>
+</blockquote>]]></content><author><name>Shin Seok Woo</name><email>shsewonitw@gmail.com</email></author><category term="tennis" /><summary type="html"><![CDATA[]]></summary></entry></feed>

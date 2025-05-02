@@ -1,9 +1,12 @@
-
+---
+layout: plain
+sitemap: false
+---
 
 # NOTICE
 
-
-
+* this list will be replaced by the toc
+{:toc .large-only}
 
 Copyright (c) 2020 Florian Klampfer <https://qwtel.com/>
 
