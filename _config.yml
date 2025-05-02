@@ -80,7 +80,7 @@ favicon: /assets/icons/favicon.ico
 # ---------------------------------------------------------------------------------------
 
 # theme: jekyll-theme-hydejack
-remote_theme: hydecorp/hydejack@v9.1.2
+remote_theme: hydecorp/hydejack@v9.2.1
 
 
 # Customizaton
