@@ -27,9 +27,13 @@ related_posts:
 - 기존에는 devlog라는 카테고리 밑에 ai, python, web, etc 라는 태그가 포함되는 구조였지만, 지금 적용할 방법은 devlog, ai, python, web, etc 모두 카테고리가 된다.
 
 # 커스텀 시작 
+
 > Directory가 없으면 생성하면 된다.
+
 ## 1. `assets/js/sidebar-folder.js` 파일 생성 
+
 - sidebar-folder.js
+
 ```javascript
 function spread(count){
     document.getElementById('folder-checkbox-' + count).checked = 
@@ -41,7 +45,9 @@ function spread(count){
 ```
 
 ## 2. `_include/body/nav.html` 파일 생성
+
 - nav.html
+
 ```html
 <span class="sr-only">{{ site.data.strings.navigation | default:"Navigation" }}{{ site.data.strings.colon | default:":" }}</span>
 <ul>
@@ -160,7 +166,9 @@ function spread(count){
 ```
 
 ## 4. `_includes/my-head.html` 파일에 내용 추가
+
 - my-head.html
+
 ```html
 <!-- 추가 -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -188,7 +196,9 @@ menu:
 ```
 
 ## 6. `_featured_categories` 에 category.md 추가
+
 - ex) ai.md
+
 ```
 ---
 layout: list
@@ -203,7 +213,9 @@ description: >
 ```
 
 ## 7. 포스팅 시, 메타데이터에 서브메뉴까지 명시
+
 - ex) 2025-04-29-posting.md
+
 ```
 ---
 layout: post
@@ -219,4 +231,5 @@ hide_last_modified: true
 ```
 
 ## 8. 수정 내용 배포 & 결과 확인
+
 ![Image](https://github.com/user-attachments/assets/4e9c811b-57b1-471f-b6e7-370c39c35cce)
