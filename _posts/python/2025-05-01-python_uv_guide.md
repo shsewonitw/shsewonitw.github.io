@@ -2,7 +2,7 @@
 layout: post
 title: "uv - 차세대 Python 패키징 도구"
 description: >
-  A page showing Hydejack-specific markdown content.
+  #python #uv
 category: 
     - devlog
     - python

@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "[AI] 브라우저에서 실행하는 LLM"
-subtitle: "WebLLM"
+description: >
+  #ai #llm #webllm #browser
 category: 
     - devlog
     - ai

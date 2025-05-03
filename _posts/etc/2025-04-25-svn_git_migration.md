@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "[ETC] SVN to Git 마이그레이션"
-subtitle: "#svn #git #migration"
+description: >
+  #svn #git #migration #svntogit
 category: 
     - devlog
     - etc
