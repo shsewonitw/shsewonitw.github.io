@@ -20,7 +20,7 @@
 lang:                  en
 
 # The title of your blog. Used in the sidebar and the browser tab.
-title:                 "0x212"
+title:                 "🐒🇰🇷"
 
 # A short description (~150 chars) of the page used for the meta description tag.
 # Can use markdown, but no more than one paragraph (enforced by `>`)
@@ -28,7 +28,7 @@ description:           >
   Hi, Im jjang
 
 # A shorter description for the sidebar.
-tagline:               🐒
+tagline:               "#developer"
 
 # A list of keywords for your blog
 keywords:              [devlog]
@@ -99,7 +99,7 @@ remote_theme: hydecorp/hydejack@v9
 # ----------------------------------------------------------------------------------------
  
 # Sidebar image and theme color of the site.
-accent_image:          /assets/img/sidebar-bg2.jpg
+accent_image:          /assets/img/sidebar-bg3.jpg
 accent_color:          rgb(79,177,186)
 
 # This is used for the `theme-color` meta tag,
@@ -418,14 +418,14 @@ jekyll_compose:
         A short ~160 character description of your post for search engines,
         social media previews, etc.
       image:
-        path: /assets/img/sidebar-bg.jpg
+        path: /assets/img/sidebar-bg3.jpg
     projects:
       layout: project
       description: > 
         A short ~160 character description of your post for search engines,
         social media previews, etc.
       image:
-        path: /assets/img/sidebar-bg.jpg
+        path: /assets/img/sidebar-bg3.jpg
       links:
         - title: Project Link
           url: https://example.com
