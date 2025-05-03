@@ -118,7 +118,9 @@ function spread(count){
 ```
 
 ## 3. `_sass/my-style.scss` 파일에 내용 추가
+
 - my-style.scss
+
 ```scss
 /* 추가 */
 .sidebar-sticky {
