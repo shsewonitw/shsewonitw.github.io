@@ -51,21 +51,21 @@ menu:
   - title:             Daily Morning Study
     url:               /dms/
     submenu:
-      - title:         AI & LLM
+      - title:         🐵AI & LLM
         url:           /aiandllm/
       - title:         Frontend & Web
         url:           /frontendandweb/
-      - title:         Backend & Architecture
+      - title:         🦒Backend <br /> & Architecture
         url:           /backendandarchitecture/
-      - title:         Devops & Cloud
+      - title:         🐔Devops & Cloud
         url:           /devopsandcloud/
-      - title:         Data Structure & Algorithm
+      - title:         🐷Data Structure <br />& Algorithm
         url:           /datastructureandalgorithm/
-      - title:         Operating System
+      - title:         🦄Operating System
         url:           /os/
-      - title:         Network
+      - title:         🐸Network
         url:           /network/
-      - title:         Database
+      - title:         🐲Database
         url:           /database/
   - title:             Devlog
     url:               /devlog/
