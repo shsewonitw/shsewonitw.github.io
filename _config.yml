@@ -48,6 +48,11 @@ author:
 
 # Add links to the sidebar.
 menu:
+  - title:             Daily morning study
+    url:               /dms/
+    submenu:
+      - title:         AI & LLM
+        url:           /aiandllm/ 
   - title:             Devlog
     url:               /devlog/
     submenu: 

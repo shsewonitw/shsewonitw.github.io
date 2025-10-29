@@ -4,7 +4,7 @@ type: category
 title: Devlog
 slug: devlog
 sidebar: true
-order: 1
+order: 2
 description: >
   Development log
 ---
