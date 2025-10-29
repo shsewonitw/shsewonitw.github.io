@@ -52,7 +52,21 @@ menu:
     url:               /dms/
     submenu:
       - title:         AI & LLM
-        url:           /aiandllm/ 
+        url:           /aiandllm/
+      - title:         Frontend & Web
+        url:           /frontendandweb/
+      - title:         Backend & Architecture
+        url:           /backendandarchitecture/
+      - title:         Devops & Cloud
+        url:           /devopsandcloud/
+      - title:         Data Structure & Algorithm
+        url:           /datastructureandalgorithm/
+      - title:         Operating System
+        url:           /os/
+      - title:         Network
+        url:           /network/
+      - title:         Database
+        url:           /database/
   - title:             Devlog
     url:               /devlog/
     submenu: 
