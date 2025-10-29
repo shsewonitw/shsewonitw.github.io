@@ -48,7 +48,7 @@ author:
 
 # Add links to the sidebar.
 menu:
-  - title:             Daily Study
+  - title:             Daily <br /> Morning \n Study
     url:               /dms/
     submenu:
       - title:         AI & LLM
