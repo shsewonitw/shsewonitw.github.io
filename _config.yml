@@ -48,18 +48,18 @@ author:
 
 # Add links to the sidebar.
 menu:
-  - title:             Daily <br /> Morning Study
+  - title:             Daily Morning Study
     url:               /dms/
     submenu:
       - title:         AI & LLM
         url:           /aiandllm/
-      - title:         Frontend <br /> & Web
+      - title:         Frontend & Web
         url:           /frontendandweb/
-      - title:         Backend <br /> & Architecture
+      - title:         Backend & Architecture
         url:           /backendandarchitecture/
-      - title:         Devops <br /> & Cloud
+      - title:         Devops & Cloud
         url:           /devopsandcloud/
-      - title:         Data Structure <br /> & Algorithm
+      - title:         Data Structure & Algorithm
         url:           /datastructureandalgorithm/
       - title:         Operating System
         url:           /os/
