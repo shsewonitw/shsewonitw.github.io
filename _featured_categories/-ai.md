@@ -1,11 +1,11 @@
 ---
 layout: list
 type: category
-title: Devops & Cloud
-slug: devopsandcloud
+title: AI
+slug: -ai
 category: dms
 sidebar: true
-order: 4
+order: 1
 description: >
-   Devops & Cloud
+   AI & LLM
 ---

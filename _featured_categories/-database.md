@@ -1,11 +1,11 @@
 ---
 layout: list
 type: category
-title: Operating System
-slug: os
+title: Database
+slug: -database
 category: dms
 sidebar: true
-order: 6
+order: 8
 description: >
-   Operating System
+   database
 ---

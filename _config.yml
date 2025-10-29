@@ -51,24 +51,26 @@ menu:
   - title:             Daily Morning Study
     url:               /dms/
     submenu:
-      - title:         ▫️AI & LLM
-        url:           /aiandllm/
-      - title:         ▫️Frontend & Web
-        url:           /frontendandweb/
-      - title:         ▫️Backend &<br />Architecture
-        url:           /backendandarchitecture/
-      - title:         ▫️Devops & Cloud
-        url:           /devopsandcloud/
-      - title:         ▫️Data Structure &<br />Algorithm
-        url:           /datastructureandalgorithm/
+      - title:         ▫️AI
+        url:           /-ai/
+      - title:         ▫️Frontend
+        url:           /-frontend/
+      - title:         ▫️Backend
+        url:           /-backend/
+      - title:         ▫️Devops
+        url:           /-devops/
+      - title:         ▫️Cloud
+        url:           /-cloud/
+      - title:         ▫️DSA
+        url:           /-dsa/
       - title:         ▫️OS
-        url:           /os/
+        url:           /-os/
       - title:         ▫️Network
-        url:           /network/
+        url:           /-network/
       - title:         ▫️Database
-        url:           /database/
+        url:           /-database/
   - title:             Devlog
-    url:               /devlog/
+    url:               /-devlog/
     submenu: 
       - title:         AI
         url:           /ai/

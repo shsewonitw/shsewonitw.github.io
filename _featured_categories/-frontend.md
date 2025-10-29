@@ -1,11 +1,11 @@
 ---
 layout: list
 type: category
-title: AI & LLM
-slug: aiandllm
+title: Frontend
+slug: -frontend
 category: dms
 sidebar: true
-order: 1
+order: 2
 description: >
-   AI & LLM
+   Frontend & Web
 ---

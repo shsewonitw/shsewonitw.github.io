@@ -1,8 +1,8 @@
 ---
 layout: list
 type: category
-title: Backend & Architecture
-slug: backendandarchitecture
+title: Backend
+slug: -backend
 category: dms
 sidebar: true
 order: 3

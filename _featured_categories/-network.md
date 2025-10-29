@@ -2,7 +2,7 @@
 layout: list
 type: category
 title: Network
-slug: network
+slug: -network
 category: dms
 sidebar: true
 order: 7

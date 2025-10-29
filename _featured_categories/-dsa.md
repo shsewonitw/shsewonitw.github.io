@@ -1,8 +1,8 @@
 ---
 layout: list
 type: category
-title: Data Structure & Algorithm
-slug: datastructureandalgorithm
+title: DSA
+slug: -dsa
 category: dms
 sidebar: true
 order: 5

@@ -1,11 +1,11 @@
 ---
 layout: list
 type: category
-title: Database
-slug: database
+title: Devops
+slug: -devops
 category: dms
 sidebar: true
-order: 8
+order: 4
 description: >
-   database
+   Devops
 ---

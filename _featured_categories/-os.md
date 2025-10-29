@@ -1,11 +1,11 @@
 ---
 layout: list
 type: category
-title: Frontend & Web
-slug: frontendandweb
+title: Operating System
+slug: -os
 category: dms
 sidebar: true
-order: 2
+order: 6
 description: >
-   Frontend & Web
+   Operating System
 ---
