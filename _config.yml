@@ -57,6 +57,8 @@ menu:
         url:           /python/
       - title:         Web
         url:           /web/
+      - title:         Study
+        url:           /study/
       - title:         ETC
         url:           /etc/
   - title:             Tennis
