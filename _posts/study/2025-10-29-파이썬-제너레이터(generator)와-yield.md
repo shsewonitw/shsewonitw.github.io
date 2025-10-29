@@ -13,32 +13,29 @@ hide_last_modified: true
 
 ---
 ---
-title: 파이썬 제너레이터(Generator)와 yield
-description: 파이썬 제너레이터의 개념, 문법, 활용 예시(파일 처리, 무한 시퀀스, 파이프라인 등), 고급 기능(yield from, send, close)과 실습 문제 및 해답을 정리한 학습 가이드
+title: "파이썬 제너레이터(Generator)와 yield 정리"
+layout: post
 ---
 
-# 파이썬 제너레이터(Generator)와 yield
+# 파이썬 제너레이터(Generator)와 yield — 학습 가이드
 
-이 문서는 파이썬 제너레이터의 핵심 개념과 실무적 활용법을 정리한 학습 가이드야. 코드를 직접 실행하면서 읽어보고, 연습 문제도 풀어보면 이해가 빨리 될 거야.
-
-목표
-- 제너레이터와 yield의 동작 원리를 이해한다.
-- 제너레이터를 이용해 메모리 효율적인 스트리밍 처리와 파이프라인을 구현할 수 있다.
-- yield from, send, close, throw 같은 고급 기능을 실무에 적용할 수 있다.
-
-사전 지식
-- 파이썬 기본 문법(함수, 반복문, 예외 처리)
-- 이터레이터(iterator)와 이터러블(iterable)의 개념을 알고 있으면 좋다
+목표: 제너레이터의 개념과 동작 방식을 이해하고, 실제 코드에서 효율적으로 사용하는 방법을 익혀서 다시 볼 수 있도록 정리한 문서다. 예제 코드와 주의점, 연습 문제도 포함되어 있으니 그대로 따라해 보면 이해가 빠르다.
 
 ---
 
-## 1. 기본 개념: 이터레이터와 제너레이터
+## 1. 핵심 개념 요약
 
-- 이터러블(iterable): `for` 루프로 순회 가능한 객체. 예: 리스트, 튜플, 문자열, 파일 객체 등.
-- 이터레이터(iterator): `__next__()` 메서드를 가진 객체. `next(it)`로 다음 값을 얻을 수 있고, 더 이상 값이 없으면 `StopIteration`을 발생시킨다.
-- 제너레이터(generator): 이터레이터를 만드는 간단한 방법. 함수 안에서 `yield` 키워드를 사용하면 그 함수는 제너레이터 함수를 반환한다. 제너레이터 함수가 호출되면 제너레이터 객체(이터레이터)를 만든다.
+- 제너레이터는 이터레이터를 만드는 간단한 방법이다.
+- 함수 안에서 `yield`를 사용하면 그 함수는 제너레이터를 반환한다.
+- 제너레이터는 값을 하나씩 계산해서 필요할 때마다(요청할 때마다) 반환한다(지연 계산, lazy evaluation).
+- 메모리 효율이 좋다(특히 큰 데이터나 무한 시퀀스에 유리).
+- 한 번 소비하면 소진된다(재사용하려면 다시 생성해야 함).
 
-간단한 예:
+---
+
+## 2. 기본 사용법
+
+간단한 예부터 보자.
 
 ```python
 def count_up_to(n):
@@ -51,403 +48,341 @@ g = count_up_to(3)
 print(next(g))  # 1
 print(next(g))  # 2
 print(next(g))  # 3
-# 다음 호출은 StopIteration 발생
+# next(g) -> StopIteration
 ```
 
-`for x in count_up_to(3):` 처럼 `for`에서 바로 사용할 수 있다.
+`yield`는 값을 반환하고 함수의 상태(로컬 변수, 실행 위치)를 보존한다. 다음 `next()` 호출에서 이어서 실행한다.
 
----
-
-## 2. yield vs return
-
-- `return`은 함수 실행을 끝내면서 값을 반환하고 종료한다.
-- `yield`는 값을 반환(생산)하면서 함수의 상태(로컬 변수, 실행 위치)를 보존한다. 이후 `next()`가 호출되면 이어서 실행을 계속한다.
-- 제너레이터는 한 번만 순회할 수 있다(단일 소비). 다회 반복하려면 새 제너레이터를 만들어야 한다.
-
-예: `return`과 `yield`의 차이
+for 루프에서는 자동으로 `StopIteration`을 처리해준다.
 
 ```python
-def f_return():
-    return [1, 2, 3]
-
-def f_yield():
-    yield 1
-    yield 2
-    yield 3
+for x in count_up_to(3):
+    print(x)
 ```
-
-`f_return()`는 리스트를 한 번에 만들어 메모리를 사용하지만, `f_yield()`는 한 번에 하나씩 생성한다.
 
 ---
 
-## 3. 제너레이터 표현식(Generator expression)
+## 3. 리스트와의 차이(메모리, 속성)
 
-리스트 컴프리헨션과 유사하지만 `[]` 대신 `()` 사용:
+리스트는 전체를 메모리에 올린다. 제너레이터는 한 번에 하나씩 생성한다.
+
+```python
+# 리스트: 메모리에 전체를 저장
+nums = [i*i for i in range(10**7)]  # 메모리 많이 사용
+
+# 제너레이터: 필요할 때만 계산
+nums_gen = (i*i for i in range(10**7))
+```
+
+- 인덱싱, len, 역순 등은 불가능하다(혹은 불편).
+- 한 번 순회하면 소진된다.
+
+---
+
+## 4. 제너레이터 표현식(generator expression)
+
+리스트 컴프리헨션과 유사한 문법으로 제너레이터를 만들 수 있다.
 
 ```python
 gen = (x*x for x in range(5))
 print(next(gen))  # 0
-for v in gen:
-    print(v)  # 1, 4, 9, 16
 ```
 
-제너레이터 표현식은 메모리를 거의 사용하지 않고 지연 평가(lazy evaluation)를 제공한다.
+괄호를 사용한다. 단일 식만 허용.
 
 ---
 
-## 4. 실용 예제: 대용량 파일 처리
+## 5. 실용 예제들
 
-큰 로그 파일을 한 줄씩 처리할 때 제너레이터가 유용하다.
-
-```python
-def read_lines(path):
-    with open(path, 'r', encoding='utf-8') as f:
-        for line in f:
-            yield line.rstrip('\n')
-
-def grep(pattern, lines):
-    for line in lines:
-        if pattern in line:
-            yield line
-
-# 사용 예
-lines = read_lines('big.log')
-matched = grep('ERROR', lines)
-for m in matched:
-    process(m)  # process는 사용자 정의 처리 함수
-```
-
-이렇게 하면 파일 전체를 메모리에 올리거나 중간 리스트를 만들지 않고 파이프라인처럼 처리할 수 있다.
-
----
-
-## 5. 무한 시퀀스와 지연 생성
-
-제너레이터는 무한 시퀀스를 만들 때도 유용하다.
+1) 큰 파일을 청크 단위로 읽기
 
 ```python
-def naturals(start=1):
-    n = start
-    while True:
-        yield n
-        n += 1
-
-# 사용: itertools.islice와 함께
-import itertools
-for x in itertools.islice(naturals(), 0, 10):
-    print(x)
-```
-
-주의: 무한 제너레이터는 반드시 소비 시 제한을 걸어야(예: islice) 무한 루프를 피한다.
-
----
-
-## 6. yield from (PEP 380) — 서브제너레이터 위임
-
-하나의 제너레이터에서 다른 제너레이터의 값을 그대로 전달하고, 서브 제너레이터의 반환값(return value)을 얻을 수 있다.
-
-```python
-def gen_inner():
-    yield 1
-    yield 2
-    return 'done'  # Python 3.3+에서 가능
-
-def gen_outer():
-    result = yield from gen_inner()
-    print('inner returned:', result)
-    yield 3
-
-for x in gen_outer():
-    print(x)
-# 출력:
-# 1
-# 2
-# inner returned: done
-# 3
-```
-
-`yield from`은 중첩 제너레이터를 깔끔하게 연결해준다. 또한 예외 전파와 close 동작을 자동으로 처리한다.
-
----
-
-## 7. 고급: send(), throw(), close() — 코루틴 스타일 사용
-
-제너레이터는 단순 생산자뿐 아니라 '코루틴' 형태로 값을 보내고 상호작용할 수 있다.
-
-- send(value): 제너레이터 내부의 `yield` 표현식에 값을 전달한다. 처음 호출은 None을 보내야 한다(제너레이터 시작 전).
-- throw(exc): 제너레이터 내부에 예외를 발생시킨다(try/except로 잡을 수 있음).
-- close(): 제너레이터에 GeneratorExit를 발생시키고 정리할 기회를 준다.
-
-예: 간단한 코루틴(에코)
-
-```python
-def echo():
-    try:
+def read_in_chunks(file_path, chunk_size=1024):
+    with open(file_path, 'rb') as f:
         while True:
-            received = yield
-            print('received', received)
-    except GeneratorExit:
-        print('echo closed')
-
-c = echo()
-next(c)         # 제너레이터를 시작(prime)
-c.send('hello') # received hello
-c.send('world') # received world
-c.close()       # echo closed
+            chunk = f.read(chunk_size)
+            if not chunk:
+                break
+            yield chunk
 ```
 
-`yield`가 표현식으로 사용될 때는 값을 받을 수 있다:
+2) 무한 시퀀스(피보나치)
+
+```python
+def fibonacci():
+    a, b = 0, 1
+    while True:
+        yield a
+        a, b = b, a + b
+```
+
+3) 파이프라인 스타일 처리
+
+```python
+def ints(iterable):
+    for s in iterable:
+        yield int(s)
+
+def even_only(it):
+    for x in it:
+        if x % 2 == 0:
+            yield x
+
+data = ["1", "2", "3", "4"]
+pipeline = even_only(ints(data))
+print(list(pipeline))  # [2, 4]
+```
+
+4) 제너레이터으로 Sieve(간단한 소수 생성기) — 교육용
+
+```python
+def odd_iter():
+    n = 1
+    while True:
+        n += 2
+        yield n
+
+def not_divisible(n):
+    return lambda x: x % n != 0
+
+def primes():
+    yield 2
+    it = odd_iter()
+    while True:
+        n = next(it)
+        yield n
+        it = filter(not_divisible(n), it)
+```
+
+---
+
+## 6. yield from (위임)
+
+하위 제너레이터로 제어와 값을 위임할 때 사용한다. 코드가 더 간결해진다.
+
+```python
+def subgen():
+    yield from range(3)
+
+def gen():
+    yield "start"
+    yield from subgen()
+    yield "end"
+
+print(list(gen()))  # ['start', 0, 1, 2, 'end']
+```
+
+`yield from`은 하위 제너레이터에서 발생하는 예외, 반환값(PEP 380) 등을 상위로 위임해준다.
+
+---
+
+## 7. 고급: send(), throw(), close() — 코루틴 기초
+
+제너레이터는 값만 내보내는 생산자 역할 외에 외부로부터 데이터를 받을 수도 있다(간단한 코루틴).
 
 ```python
 def accumulator():
     total = 0
     while True:
-        x = yield total  # yield가 값을 반환하고, 외부에서 send로 x를 전달
+        x = yield total  # yield 후 외부에서 send로 값을 받음
         if x is None:
             break
         total += x
     return total
-
-c = accumulator()
-print(next(c))     # 0 (초기 total)
-print(c.send(10))  # 10 (이전 total 반환), 내부 total은 10
-print(c.send(5))   # 15
-try:
-    c.send(None)   # 종료 신호
-except StopIteration as e:
-    print('final total via StopIteration.value =', e.value)
 ```
 
-주의: 제너레이터가 반환(return)하면 그 값은 StopIteration의 value 속성으로 전달된다. (Python 3.3+)
+사용법:
+
+```python
+c = accumulator()
+print(next(c))       # 제너레이터 시작, yield total -> 0
+print(c.send(10))    # send 값이 x에 들어가고, 다음 yield에서 total 반환 -> 10
+print(c.send(5))     # -> 15
+try:
+    c.send(None)     # 루프에서 None으로 종료하고 return -> StopIteration(value)
+except StopIteration as e:
+    print("Returned:", e.value)
+```
+
+- `send(value)`는 `next()`처럼 동작하지만, 바로 전 `yield` 표현식의 값으로 `value`를 전달한다.
+- `throw(exc)`는 제너레이터 내부에서 해당 예외를 발생시킨다.
+- `close()`는 `GeneratorExit`를 발생시켜 정리 코드를 실행하게 한다.
+
+주의: 코루틴 스타일로 쓸 때는 처음에 반드시 `next(g)` 또는 `g.send(None)`로 시작해야 한다(첫 send는 yield가 대기하고 있어야 한다).
 
 ---
 
-## 8. 실용적인 파이프라인 예시
+## 8. 제너레이터에서의 반환값
 
-로그 스트림을 받아 JSON으로 파싱하고 필터링해서 통계내기:
+Python 3.3+에서는 `return value`를 사용해 제너레이터를 종료하면서 값을 전달할 수 있다. 이 값은 `StopIteration.value`로 얻는다(주로 `yield from` 패턴에서 유용).
 
 ```python
-import json
+def sub():
+    yield 1
+    yield 2
+    return "done"
 
-def read_lines(path):
-    with open(path, 'r', encoding='utf-8') as f:
+def main():
+    result = yield from sub()
+    print("sub returned:", result)
+
+g = main()
+list(g)  # sub returned: done
+```
+
+직접 `next()`/`send()`를 사용하는 코드에서 `StopIteration`의 `value`를 잡아 처리할 수도 있다.
+
+---
+
+## 9. 성능/메모리 관련 팁
+
+- 큰 데이터 처리: 제너레이터 사용으로 메모리 절약.
+- 작은 데이터/복수 접근: 리스트가 더 빠를 수 있다(인덱싱/랜덤 접근).
+- 이터레이터 체이닝/필터링 등 반복 기반 처리에서 제너레이터와 itertools를 같이 쓰면 아주 효율적이다.
+
+예: itertools와 함께
+
+```python
+import itertools
+nums = (i for i in range(1000000))
+filtered = itertools.islice(nums, 100)  # 필요 요소만 취함
+```
+
+---
+
+## 10. 흔히 하는 실수와 주의사항
+
+- 제너레이터는 한 번만 순회 가능하다. 다시 사용하려면 재생성해야 한다.
+- `len()`이나 인덱스 접근 불가.
+- 데버깅 시 내부 상태 확인이 어려울 수 있다(프린트나 로거로 상태 찍어보기).
+- `yield`와 `return`의 혼동: `return`은 제너레이터를 끝내고 `StopIteration` 발생. `yield`는 값을 내보내며 함수 상태 보존.
+- 파일 핸들링과 같이 컨텍스트 매니저와 같이 사용하는 경우, 제너레이터가 파일을 닫기 전에 소비가 끝나버리면 문제가 생긴다. 예:
+
+```python
+def bad_reader(path):
+    with open(path) as f:
         for line in f:
             yield line
 
-def parse_json(lines):
-    for line in lines:
-        try:
-            yield json.loads(line)
-        except json.JSONDecodeError:
-            continue
-
-def filter_level(records, level):
-    for r in records:
-        if r.get('level') == level:
-            yield r
-
-def count_by_key(records, key):
-    counts = {}
-    for r in records:
-        k = r.get(key)
-        counts[k] = counts.get(k, 0) + 1
-    yield counts
-
-# 파이프라인 연결
-lines = read_lines('logs.jsonl')
-records = parse_json(lines)
-errors = filter_level(records, 'ERROR')
-counts = next(count_by_key(errors, 'service'))
-print(counts)
+g = bad_reader("file.txt")
+# with 블록이 함수 내부라 괜찮지만, 호출 시점에 소비가 늦으면 파일이 닫힐 수 있음
+# 실제로는 위 코드는 제너레이터가 열려있는 동안 파일은 닫히지 않음(함수 scope 유지)
 ```
 
-각 단계가 제너레이터라서 중간 결과를 메모리에 올리지 않고 스트림으로 처리할 수 있다.
-
----
-
-## 9. 성능 및 메모리 고려사항
-
-- 장점
-  - 메모리 사용량 감소: 필요한 값만 생성.
-  - 명료한 스트리밍 파이프라인 작성 가능.
-  - 무한 시퀀스 표현 가능.
-
-- 단점 / 주의사항
-  - 제너레이터는 함수 호출/상태 저장 비용이 있으므로 초단기 반복(엄청 많은 작은 연산)에서는 리스트보다 느릴 수 있다.
-  - 한 번 소비하면 재사용 불가: 결과를 여러 번 사용하려면 리스트로 변환하거나 제너레이터를 여러 번 생성해야 한다.
-  - 디버깅이 까다로울 수 있다(실행 위치 보관).
-  - 예외 처리와 반환 값(Pep 380) 동작을 잘 이해해야 한다.
-
----
-
-## 10. 자주 쓰이는 패턴 모음
-
-- chunked 처리(큰 시퀀스를 청크 단위로 처리)
-
-```python
-def chunked(iterable, size):
-    it = iter(iterable)
-    while True:
-        chunk = []
-        try:
-            for _ in range(size):
-                chunk.append(next(it))
-        except StopIteration:
-            if chunk:
-                yield chunk
-            break
-        yield chunk
-```
-
-- sliding window (윈도우 슬라이딩)
-
-```python
-from collections import deque
-
-def sliding_window(iterable, n):
-    it = iter(iterable)
-    window = deque(maxlen=n)
-    for _ in range(n):
-        try:
-            window.append(next(it))
-        except StopIteration:
-            return
-    yield tuple(window)
-    for x in it:
-        window.append(x)
-        yield tuple(window)
-```
-
-- flatten (중첩 리스트 평탄화)
-
-```python
-def flatten(nested):
-    for item in nested:
-        if isinstance(item, (list, tuple)):
-            for sub in flatten(item):
-                yield sub
-        else:
-            yield item
-```
+더 안전한 패턴은 파일을 제너레이터 외부에서 열고 명시적으로 닫는 것이다.
 
 ---
 
 ## 11. 디버깅 팁
 
-- 제너레이터 내부 상태를 확인하려면 간단한 로그(프린트)를 넣어라.
-- 재사용이 필요하면 결과를 리스트로 받아두거나, 제너레이터를 생성하는 함수를 호출하는 편이 안전하다.
-- `inspect.getgeneratorstate(gen)`로 제너레이터 상태(NEW, RUNNING, SUSPENDED, CLOSED)를 확인할 수 있다.
+- 제너레이터 내부에 logging/print를 넣어 상태를 확인하자.
+- 작은 예제로 동작을 먼저 확인하자.
+- `inspect.getgeneratorstate(g)`로 상태 확인 가능(`GEN_CREATED`, `GEN_RUNNING`, `GEN_SUSPENDED`, `GEN_CLOSED`).
 
 ```python
 import inspect
-inspect.getgeneratorstate(gen)
+g = count_up_to(3)
+print(inspect.getgeneratorstate(g))  # GEN_CREATED
+next(g)
+print(inspect.getgeneratorstate(g))  # GEN_SUSPENDED
 ```
 
 ---
 
 ## 12. 연습 문제(스스로 풀어보기)
 
-1) 파일에서 n줄씩 묶어 리스트로 반환하는 `read_in_chunks(path, n)` 제너레이터를 작성하라. 각 청크는 최대 n줄이다.
+1. 파일을 라인 단위로 읽되, 특정 키워드가 나올 때까지의 라인만 제너레이터로 반환하는 함수를 만들어라.
+2. 무한 소수 생성기를 만들어서 100번째 소수를 출력하라.
+3. 두 개의 정렬된 제너레이터를 받아서 병합(merge)하는 제너레이터를 구현하라(병합 정렬의 merge와 유사).
 
-2) 자연수에서 소수만 생성하는 무한 제너레이터 `primes()`를 간단한 에라토스테네스 방식(메모리 제한된 간단 버전)으로 작성해라.
+힌트와 해답은 아래에 있다(먼저 직접 풀어본 뒤 확인해라).
 
-3) 제너레이터와 `send()`를 이용해 간단한 누적 합 코루틴을 만들라. 외부에서 값을 보내면 누적하고, 특정 값(예: None)을 보내면 종료하고 최종 합계를 반환하라.
+힌트:
+- 1번은 파일을 한 줄씩 읽어 `yield`하면 된다.
+- 2번은 단순 소수 판별(제곱근까지 검사)로 충분하다.
+- 3번은 두 제너레이터에서 각각 next를 호출해 현재 값을 비교하며 작은 것을 yield한다.
 
-4) 중첩된 이터러블(리스트/튜플)에서 숫자만 yield하는 `deep_numbers()` 제너레이터를 작성하라.
-
----
-
-## 13. 연습 해답 (모범 답안)
-
-1) read_in_chunks
+간단한 해답 예시(참고용):
 
 ```python
-def read_in_chunks(path, n):
-    with open(path, 'r', encoding='utf-8') as f:
-        chunk = []
+# 1번
+def lines_until(filename, keyword):
+    with open(filename, 'r', encoding='utf-8') as f:
         for line in f:
-            chunk.append(line.rstrip('\n'))
-            if len(chunk) >= n:
-                yield chunk
-                chunk = []
-        if chunk:
-            yield chunk
-```
+            if keyword in line:
+                break
+            yield line
 
-2) primes (간단한 생성기 — 희소한 검사)
+# 2번 (단순)
+def is_prime(n):
+    if n < 2:
+        return False
+    i = 2
+    while i*i <= n:
+        if n % i == 0:
+            return False
+        i += 1
+    return True
 
-```python
-def primes():
-    D = {}  # 합성수의 최소 소인수 기록: composite -> [prime1, prime2, ...]
-    q = 2
+def prime_gen():
+    n = 2
     while True:
-        if q not in D:
-            # q는 소수
-            yield q
-            D[q*q] = [q]
-        else:
-            for p in D[q]:
-                D.setdefault(p+q, []).append(p)
-            del D[q]
-        q += 1
-```
+        if is_prime(n):
+            yield n
+        n += 1
 
-(위 코드는 일반적인 "incremental sieve" 아이디어의 한 예야. 메모리/성능 면에서 여러 개선이 가능해.)
+g = prime_gen()
+for _ in range(99):
+    next(g)
+print(next(g))  # 100번째 소수
 
-3) 누적 합 코루틴
-
-```python
-def accumulator():
-    total = 0
+# 3번
+def merge(a, b):
+    a = iter(a)
+    b = iter(b)
     try:
-        while True:
-            x = yield total
-            if x is None:
-                return total
-            total += x
-    except GeneratorExit:
-        return total
-
-# 사용 예
-c = accumulator()
-print(next(c))      # 0
-print(c.send(10))   # 10
-print(c.send(5))    # 15
-try:
-    c.send(None)
-except StopIteration as e:
-    print('final:', e.value)  # final: 15
-```
-
-4) deep_numbers
-
-```python
-def deep_numbers(obj):
-    if isinstance(obj, (list, tuple)):
-        for item in obj:
-            yield from deep_numbers(item)
-    elif isinstance(obj, (int, float)):
-        yield obj
-    else:
-        # 무시하거나 필요시 변환 추가
+        av = next(a)
+    except StopIteration:
+        yield from b
         return
+    try:
+        bv = next(b)
+    except StopIteration:
+        yield av
+        yield from a
+        return
+
+    while True:
+        if av <= bv:
+            yield av
+            try:
+                av = next(a)
+            except StopIteration:
+                yield bv
+                yield from b
+                return
+        else:
+            yield bv
+            try:
+                bv = next(b)
+            except StopIteration:
+                yield av
+                yield from a
+                return
 ```
 
 ---
 
-## 14. 정리(핵심 요점)
+## 13. 요약(cheat sheet)
 
-- 제너레이터는 함수 상태를 유지하면서 값을 하나씩 생성하는 이터레이터다.
-- 메모리 효율, 지연 평가, 파이프라인 구성에 유리하다.
-- `yield from`으로 서브제너레이터를 위임하고 반환값을 받을 수 있다.
-- `send`, `throw`, `close`로 제너레이터와 양방향 통신(코루틴 스타일)이 가능하다.
-- 제너레이터는 한 번만 소비될 수 있으므로 재사용이 필요하면 새로 생성하거나 결과를 저장하라.
+- 제너레이터 만들기: 함수 안에서 `yield` 사용.
+- 제너레이터 호출: `g = gen()` — 소비: `next(g)`, `for x in g: ...`, `list(g)`.
+- 한 번 소비되면 끝. 재사용하려면 새로 생성.
+- `send(value)`: 마지막 `yield`의 표현식 결과로 전달된다. 처음엔 `next(g)` 또는 `g.send(None)` 필요.
+- `yield from subgen()`으로 하위 제너레이터 위임.
+- `return value` -> `StopIteration.value`(PEP 380).
+- 메모리 효율 + 스트리밍 처리에 강함. 복잡한 상태 기계나 비동기/코루틴 전환의 기초로 활용 가능.
 
 ---
 
-참고 자료
-- 파이썬 공식 문서: https://docs.python.org/3/reference/expressions.html#yieldexpr
-- PEP 342, PEP 380 (send, yield from 관련)
-- itertools 모듈 문서
-
-필요하면 각 예제를 더 확장하거나 실무 예제로 바꿔서 정리해줄게.
+필요하면 각 예제를 더 자세히 풀어보고, 실제 케이스(로그 처리, 네트워크 스트리밍, ETL 파이프라인)로 확장된 예제를 추가로 정리할게.
