@@ -53,13 +53,13 @@ menu:
     submenu:
       - title:         🐵AI & LLM
         url:           /aiandllm/
-      - title:         Frontend & Web
+      - title:         🐮Frontend & Web
         url:           /frontendandweb/
-      - title:         🦒Backend <br /> & Architecture
+      - title:         🦒Backend &<br />Architecture
         url:           /backendandarchitecture/
       - title:         🐔Devops & Cloud
         url:           /devopsandcloud/
-      - title:         🐷Data Structure <br />& Algorithm
+      - title:         🐷Data Structure &<br />Algorithm
         url:           /datastructureandalgorithm/
       - title:         🦄Operating System
         url:           /os/
