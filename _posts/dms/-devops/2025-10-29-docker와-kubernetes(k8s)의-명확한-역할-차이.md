@@ -5,7 +5,7 @@ description: >
   #daily morning study
 category: 
     - dms
-    - devopsandcloud
+    - -devops
 hide_last_modified: true
 ---
 
