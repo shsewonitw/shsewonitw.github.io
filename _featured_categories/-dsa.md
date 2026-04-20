@@ -2,7 +2,7 @@
 layout: list
 type: category
 title: DSA
-slug: -dsa
+slug: dms-dsa
 category: dms
 sidebar: true
 order: 5
