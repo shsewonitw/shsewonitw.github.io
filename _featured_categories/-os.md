@@ -2,7 +2,7 @@
 layout: list
 type: category
 title: Operating System
-slug: -os
+slug: dms-os
 category: dms
 sidebar: true
 order: 6

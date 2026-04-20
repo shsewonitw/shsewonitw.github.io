@@ -48,6 +48,27 @@ More examples:
 - [ ] Filename format: `YYYY-MM-DD-slug.md`
 - [ ] `title:` in front matter may still contain the original special characters for display
 
+## Category Slugs
+
+The `category:` field in post front matter must use the exact slugs below.
+Do NOT use the old `-ai`, `-backend`, etc. values — they cause 404 errors.
+
+### DMS sub-categories
+
+| Title shown in sidebar | Slug to use in `category:` |
+|------------------------|---------------------------|
+| AI                     | `dms-ai`                  |
+| Frontend               | `dms-frontend`            |
+| Backend                | `dms-backend`             |
+| Devops                 | `dms-devops`              |
+| Cloud                  | `dms-cloud`               |
+| DSA                    | `dms-dsa`                 |
+| OS                     | `dms-os`                  |
+| Network                | `dms-network`             |
+| Database               | `dms-database`            |
+
+**Rule:** DMS sub-category slugs always follow the pattern `dms-<topic>`.
+
 ## Post Front Matter Template
 
 ```yaml
@@ -58,7 +79,7 @@ description: >
   #daily morning study
 category: 
     - dms
-    - -<category>
+    - dms-ai        # ← use dms-<topic> slug from the table above
 hide_last_modified: true
 ---
 ```

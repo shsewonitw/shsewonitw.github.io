@@ -5,7 +5,7 @@ description: >
   #daily morning study
 category: 
     - dms
-    - -front
+    - dms-frontend
 hide_last_modified: true
 ---
 

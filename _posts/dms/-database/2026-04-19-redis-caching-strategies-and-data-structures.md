@@ -5,7 +5,7 @@ description: >
   #daily morning study
 category: 
     - dms
-    - -database
+    - dms-database
 hide_last_modified: true
 ---
 

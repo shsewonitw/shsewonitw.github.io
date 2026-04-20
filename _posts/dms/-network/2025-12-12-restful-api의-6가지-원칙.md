@@ -5,7 +5,7 @@ description: >
   #daily morning study
 category: 
     - dms
-    - -network
+    - dms-network
 hide_last_modified: true
 ---
 

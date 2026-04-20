@@ -2,7 +2,7 @@
 layout: list
 type: category
 title: AI
-slug: -ai
+slug: dms-ai
 category: dms
 sidebar: true
 order: 1

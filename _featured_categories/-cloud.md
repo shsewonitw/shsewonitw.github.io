@@ -1,11 +1,11 @@
 ---
 layout: list
 type: category
-title: Backend
-slug: dms-backend
+title: Cloud
+slug: dms-cloud
 category: dms
 sidebar: true
-order: 3
+order: 9
 description: >
-   Backend & Architecture
+   Cloud & Infrastructure
 ---

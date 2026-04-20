@@ -5,7 +5,7 @@ description: >
   #daily morning study
 category: 
     - dms
-    - -ai
+    - dms-ai
 hide_last_modified: true
 ---
 

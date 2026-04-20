@@ -2,7 +2,7 @@
 layout: list
 type: category
 title: Frontend
-slug: -frontend
+slug: dms-frontend
 category: dms
 sidebar: true
 order: 2
