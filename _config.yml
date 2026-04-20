@@ -52,23 +52,23 @@ menu:
     url:               /dms/
     submenu:
       - title:         ▫️AI
-        url:           /-ai/
+        url:           /dms-ai/
       - title:         ▫️Frontend
-        url:           /-frontend/
+        url:           /dms-frontend/
       - title:         ▫️Backend
-        url:           /-backend/
+        url:           /dms-backend/
       - title:         ▫️Devops
-        url:           /-devops/
+        url:           /dms-devops/
       - title:         ▫️Cloud
-        url:           /-cloud/
+        url:           /dms-cloud/
       - title:         ▫️DSA
-        url:           /-dsa/
+        url:           /dms-dsa/
       - title:         ▫️OS
-        url:           /-os/
+        url:           /dms-os/
       - title:         ▫️Network
-        url:           /-network/
+        url:           /dms-network/
       - title:         ▫️Database
-        url:           /-database/
+        url:           /dms-database/
   - title:             Devlog
     url:               /-devlog/
     submenu: 
