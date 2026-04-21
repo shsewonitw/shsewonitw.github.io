@@ -83,3 +83,34 @@ category:
 hide_last_modified: true
 ---
 ```
+
+## Duplicate Post Prevention
+
+**Before writing a new post, always check existing posts to avoid duplicate topics.**
+
+```bash
+# Check existing post titles
+ls _posts/dms/-database/
+ls _posts/dms/-ai/
+# (check the relevant category directory)
+```
+
+### Rules
+
+- Do NOT write a post whose core topic is already covered by an existing post.
+- If a related post exists, choose a clearly different angle or a more specific subtopic.
+- Redis posts already exist covering: data structures, caching strategies (Cache-Aside, Write-Through, Write-Behind), cache invalidation, TTL, eviction policy, persistence (RDB/AOF).
+
+### Bad examples (duplicate)
+
+| Existing post | Bad new post (too similar) |
+|--------------|---------------------------|
+| Redis 캐싱 전략과 핵심 자료구조 | Redis 데이터 구조와 캐싱 전략 ← same content |
+| Redis 캐시 전략 (Cache-Aside...) | Redis 캐시 전략 정리 ← same content |
+
+### Good examples (distinct angle)
+
+| Existing post | Good new post (different angle) |
+|--------------|--------------------------------|
+| Redis 캐싱 전략 | Redis Pub/Sub과 Stream 활용 |
+| Redis 데이터 구조 | Redis Cluster 구성과 Failover |
